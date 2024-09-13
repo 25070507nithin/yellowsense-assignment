@@ -1,0 +1,13 @@
+.jobs {
+    height: 90vh; 
+    overflow-y: auto; 
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ddd; 
+  }
+  
+.no-jobs{
+    font-family: "Roboto";
+    text-align: center;
+    color: red;
+  }

@@ -1,13 +1,18 @@
-// src/components/JobDetails.js
 import React from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 
+const JobDetails = () => {
+  const location = useLocation(); 
+  const navigate = useNavigate(); 
+  const job = location.state?.job; 
 
-const JobDetails = ({ job, onClose }) => {
-  if (!job) return null;
+  if (!job) {
+    return <p>No job details available</p>; 
+  }
 
   return (
-    <div className="job-details">
-      <button className="back-button" onClick={onClose}>Back</button>
+    <div >
+      <button  onClick={() => navigate(-1)}>Back</button>
       <h2>{job.title}</h2>
       <p><strong>Company:</strong> {job.company}</p>
       <p><strong>Location:</strong> {job.location}</p>

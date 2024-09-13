@@ -1,7 +1,6 @@
-// src/components/Bookmarks.js
 import React, { useState, useEffect } from 'react';
 import JobCard from '../JobCard';
-
+import "./index.css"
 
 const Bookmarks = ({ onJobSelect }) => {
   const [bookmarkedJobs, setBookmarkedJobs] = useState([]);
@@ -16,7 +15,7 @@ const Bookmarks = ({ onJobSelect }) => {
   }, []);
 
   return (
-    <div className="bookmarks">
+    <div >
       {bookmarkedJobs.length > 0 ? (
         bookmarkedJobs.map(job => (
           <JobCard
@@ -26,7 +25,7 @@ const Bookmarks = ({ onJobSelect }) => {
           />
         ))
       ) : (
-        <p>No jobs bookmarked yet</p>
+        <p className='no-bookmarks'>No jobs bookmarked yet</p>
       )}
     </div>
   );

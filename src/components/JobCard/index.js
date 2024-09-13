@@ -1,6 +1,5 @@
-// src/components/JobCard.js
 import React, { useState } from 'react';
-
+import "./index.css"
 
 const JobCard = ({ job, onClick }) => {
   const [isBookmarked, setIsBookmarked] = useState(() => {
@@ -22,9 +21,9 @@ const JobCard = ({ job, onClick }) => {
   return (
     <div className="job-card" onClick={onClick}>
       <h3>{job.title}</h3>
-      <p><strong>Location:</strong> {job.location}</p>
-      <p><strong>Salary:</strong> {job.salary}</p>
-      <p><strong>Phone:</strong> {job.phone}</p>
+      <p><strong>Location:</strong> {job.job_location_slug}</p>
+      <p><strong>Salary:</strong> {job.salary_max}</p>
+      <p><strong>Phone:</strong> {job.whatsapp_no}</p>
       <button className={`bookmark-btn ${isBookmarked ? 'bookmarked' : ''}`} onClick={e => {
         e.stopPropagation();
         handleBookmark();

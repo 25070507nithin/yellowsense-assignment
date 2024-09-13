@@ -1,7 +1,7 @@
-// src/components/Jobs.js
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import JobCard from '../JobCard';
-
+import "./index.css"
 
 const Jobs = ({ onJobSelect }) => {
   const [jobs, setJobs] = useState([]);
@@ -9,6 +9,7 @@ const Jobs = ({ onJobSelect }) => {
   const [error, setError] = useState(null);
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchJobs = async () => {
@@ -27,11 +28,15 @@ const Jobs = ({ onJobSelect }) => {
 
     fetchJobs();
   }, [page]);
-  console.log(jobs)
+  
+  const handleJobSelect = (job) => {
+    
+    navigate('/job-details', { state: { job } });
+  };
 
   const handleScroll = (event) => {
     const { scrollTop, clientHeight, scrollHeight } = event.currentTarget;
-    if (scrollHeight - scrollTop <= clientHeight && hasMore && !loading) {
+    if (scrollHeight - scrollTop <= clientHeight + 50 && hasMore && !loading) {
       setPage(prevPage => prevPage + 1);
     }
   };
@@ -42,12 +47,12 @@ const Jobs = ({ onJobSelect }) => {
         <JobCard
           key={job.id}
           job={job}
-          onClick={() => onJobSelect(job)}
+          onClick={() => handleJobSelect(job)} 
         />
       ))}
       {loading && <p>Loading...</p>}
       {error && <p>{error}</p>}
-      {!hasMore && <p>No more jobs available</p>}
+      {!hasMore && <p className='no-jobs'>No more jobs available</p>}
     </div>
   );
 };
