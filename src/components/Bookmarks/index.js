@@ -1,23 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import JobCard from '../JobCard';
-import "./index.css"
+import './index.css';
 
 const Bookmarks = ({ onJobSelect }) => {
   const [bookmarkedJobs, setBookmarkedJobs] = useState([]);
 
   useEffect(() => {
-    const loadBookmarks = () => {
-      const storedBookmarks = JSON.parse(localStorage.getItem('bookmarkedJobs')) || [];
-      setBookmarkedJobs(storedBookmarks);
-    };
-
-    loadBookmarks();
+    const storedBookmarks = JSON.parse(localStorage.getItem('bookmarkedJobs')) || [];
+    setBookmarkedJobs(storedBookmarks);
   }, []);
 
   return (
-    <div >
+    <div>
       {bookmarkedJobs.length > 0 ? (
-        bookmarkedJobs.map(job => (
+        bookmarkedJobs.map((job) => (
           <JobCard
             key={job.id}
             job={job}
@@ -25,7 +21,7 @@ const Bookmarks = ({ onJobSelect }) => {
           />
         ))
       ) : (
-        <p className='no-bookmarks'>No jobs bookmarked yet</p>
+        <p className="no-bookmarks">No jobs bookmarked yet</p>
       )}
     </div>
   );

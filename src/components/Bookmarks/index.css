@@ -1,5 +1,32 @@
-.no-bookmarks{
-    color: red;
-    font-family: "Roboto";
+.job-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    margin: 16px 0;
+    background-color: #fff;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+  }
+  
+  .job-card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .jobs-container {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .bookmark-btn.bookmarked {
+    background-color: #f0c14b;
+  }
+  
+  .no-jobs {
     text-align: center;
-}
+    margin-top: 20px;
+  }
+  
+  .no-bookmarks {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
